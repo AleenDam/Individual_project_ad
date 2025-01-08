@@ -15,8 +15,8 @@ def choose_meal():
         'Broccoli Soup',
         'Vegan Apple Crumble',
         'Garlic Mushroom Pie',
-        #'Spaghetti Bolognese',
-        #'Grilled Salmon'
+        'Spaghetti Bolognese',
+        'Grilled Salmon'
     ]
 
     print('What do you want to eat today?')
@@ -35,7 +35,7 @@ def choose_meal():
 
 
 def main():
-    greet_user()  
+    #greet_user()  
     meal_choice = choose_meal()
     recipes = {
         'Chicken & Chips': chicken_chips,
@@ -43,18 +43,19 @@ def main():
         'Broccoli Soup': brocolli_soup,
         'Vegan Apple Crumble': vegan_apple_crumble,
         'Garlic Mushroom Pie': garlic_mushroom_pie,
-        #'Spagetti Bolognese': spagetti_bolognese,
-        #'Grilled Salmon': grilled_salmon
+        'Spagetti Bolognese': spagetti_bolognese,
+        'Grilled Salmon': grilled_salmon
     }
     selected_recipe = recipes.get(meal_choice)
     if selected_recipe:
         print_shopping_list(selected_recipe)
+        #return menu == selected_recipe
     else:
-        print('Recipe not found')    
+        print('Recipe not found') 
 
 
 ingredient_prices = {
-    'Brocolli': 0.5,
+    'Broccoli': 0.5,
     'Spring onions': 0.3,
     'Bread': 3,
     'Cheddar cheese': 3,
@@ -63,7 +64,7 @@ ingredient_prices = {
     'Mix seeds': 3.5,
     'Apples': 0.6,
     'Sugar': 1.5,
-    'Lemon': 1,
+    'Lemon': 0.7,
     'Vegan butter': 3.9,
     'Plain flour': 1.5,
     'Almonds': 3,
@@ -74,12 +75,29 @@ ingredient_prices = {
     'Potatoes': 0.2,
     'Eggs': 0.3,
     'Cornichons': 2,
-    'Goat cheese': 4
+    'Goat cheese': 4,
+    'Salmon fillet': 8,
+    'Lemongrass': 2,
+    'Ginger': 1.3,
+    'Soy sauce': 3,
+    'Chilli': 0.4,
+    'Lime': 0.6,
+    'Spagetti': 2,
+    'Red onions': 0.5,
+    'Carrots': 0.1,
+    'Celery' : 1,
+    'Rosemary': 0.2,
+    'Bacon': 3,
+    'Onions': 0.4,
+    'Oregano': 0.5
+
+
+
 }
 
 
 def print_shopping_list(recipe):
-    print('Shopping list for your chosen meal today:')
+    print(f'Shopping list for your chosen meal: ')
     particular_recipe = [
         {'ingredient': recipe['ingredients'][i],
         'amount' : recipe['amount'][i],
@@ -87,7 +105,7 @@ def print_shopping_list(recipe):
     for i in range(len(recipe['ingredients']))
     ]
     for item in particular_recipe:
-        print(f'{item['ingredient']}: {item['amount']} piece(s) for {item['price']} Euro')
+        print(f'{item['ingredient']}: {item['amount']} piece(s) for €{item['price']} per piece.')
 
     total_cost = 0
     for i in particular_recipe:
@@ -105,7 +123,7 @@ def create_recipe(ingredients, amounts):
 
 chicken_chips = {'ingredients' : ['Potatoes', 'Onions', 'Oregano:', 'Lemons', 'Chicken legs'],
                         'amount' : [10, 2, 1, 2, 4],
-                        'price' : [3, 1.5, 3, 1.8, 8]}
+                        'price' : [0.2, 0.4, 0.5, 0.8, 1.3]}
 
 
 chilli_con_carne = {'ingredients' : ['Sweet potato', 'Paprika', 'Black beans:', 'Chilli', 'Coriander', 'Beef minced','Lime','Cherry tomatoes'],
@@ -126,6 +144,14 @@ vegan_apple_crumble = {'ingredients' : ['Apples', 'Sugar', 'Lemon', 'Vegan butte
 garlic_mushroom_pie = {'ingredients' : ['Mushrooms', 'Baby spinach', 'Garlic', 'Potatoes', 'Eggs', 'Cornichons', 'Goat cheese'],
                         'amount' : [12, 1, 1, 10, 4, 8, 1 ],
                         'price' : [4,2.5, 0.5, 3, 2, 2, 4 ]}
+
+spagetti_bolognese = {'ingredients' : ['Spagetti', 'Red onions', 'Garlic', 'Carrots', 'Celery', 'Rosemary', 'Bacon'],
+                        'amount' : [1, 3, 2, 3, 3, 2, 1 ],
+                        'price' : [2, 0.5, 0.5, 0.1, 1, 0.2, 3]}
+
+grilled_salmon = {'ingredients' : ['Salmon fillet', 'Lemongrass', 'Ginger', 'Garlic', 'Soy sauce', 'Honey', 'Chilli', 'Spring onions', 'Lime'],
+                        'amount' : [1, 1, 1, 1, 1, 1, 1, 2, 2],
+                        'price' : [8, 2, 1.3, 1.5, 3, 1.5, 0.4, 0.3, 0.6]}
 
 main()
 
