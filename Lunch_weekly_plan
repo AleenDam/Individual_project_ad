@@ -1,0 +1,31 @@
+from datetime import datetime, timedelta
+def greet_user():
+    user = input('Enter your name: ')
+    today = datetime.today()
+    formated_date = today.strftime('%A, %d. %B %Y')
+    future_day = today + timedelta(days = 7)
+    formated_future_day = future_day.strftime('%A, %d. %B %Y')
+    print(f'Hello {user}. Today is a beautiful {formated_date}.')
+    print(f'Let us plan your meals for the next 7 days, until {formated_future_day}.')
+
+#greet_user()   
+
+chicken_chips = {'ingredients' : ['Potatoes', 'Onions', 'Oregano:', 'Lemons', 'Chicken legs'],
+                        'amount' : [10, 2, 1, 2, 4],
+                        'price' : [3, 1.5, 3, 1.8, 5]
+}
+print('Shopping list for your chosen meal today:')
+recipe_chicken_chips = [
+    {'ingredient': chicken_chips['ingredients'][i],
+     'amount' : chicken_chips['amount'][i],
+     'price' : chicken_chips['price'][i]}
+     for i in range(len(chicken_chips['ingredients']))
+]
+for item in recipe_chicken_chips:
+    print(f'{item['ingredient']}: {item['amount']} pieces for {item['price']} Euro')
+
+sum = 0
+for i in range(len(chicken_chips['price'])):
+    sum += i
+print(f'For the Chicken & Chips meal you would spend {sum} Euro in your market.')
+
