@@ -8,7 +8,7 @@ def greet_user():
     user = input('Enter your name: ')
     today = datetime.today()
     form_date = today.strftime('%A, %d. %B %Y')
-    print(f'Hello {user}!')
+    print(f'Hello {user}. Are you hungry?')
     print(f'Let us plan your meal for today, {form_date}.')
 
  
@@ -27,8 +27,8 @@ def choose_meal():
         'Grilled Salmon'
     ]
 
-    print('{user} are you hungry? What do you fancy as your mouth-watering meal? \nPlease note, that all recipes are for 4 people.')
-    print('Choose your desired meal option and enter the number: ')
+    print('\nWhat do you fancy as a mouth-watering meal? \nPlease note, that all recipes are for 4 people.')
+    print('\nChoose your desired meal option and enter the number: ')
     for i, meal in enumerate(meals, start=1):
         print(f'{i}. {meal}')
     try:
@@ -120,7 +120,7 @@ def print_shopping_list(recipe, meal_name):
     Args: recipe(dict): Dictionary containing ingredients and amounts.
         meal_name(str): Name of the meal.
     '''
-    print(f'Shopping list for your {meal_name}: ')
+    print(f'\nShopping list for your {meal_name}: ')
     total_cost = 0
     for i in range(len(recipe['ingredients'])):
         ingredient = recipe['ingredients'][i]
@@ -133,14 +133,14 @@ def print_shopping_list(recipe, meal_name):
         total_cost += cost
         print(f'{ingredient}: {amount} piece(s) for €{price_per_unit} per piece.')
 
-    print(f'For your lunch * {meal_name} * you will spend {total_cost:.2f} Euro in your market.') 
+    print(f'\nFor your meal * {meal_name} * you will spend {total_cost:.2f} Euro in your market.') 
 
 def create_recipe(ingredients, amounts):
     '''
     Function that combines ingredients and amounts to create a recipe.
     * note: All recipes are taken from the official website of Jamie Oliver https://www.jamieoliver.com/
     Returns: parameter ingredients and amounts, that are keys in dictionary
-        and are being used by the other function - print_shoping_list.
+        and are being used by the other function - print_shopping_list.
         Price - extracted from the variable ingredient_prices original list.
     '''
     return {
