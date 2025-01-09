@@ -1,6 +1,10 @@
 from datetime import datetime
 
 def greet_user():
+    """
+    Greets user with their name and today's date.
+    Asks user to enter their name to print out the greeting message.
+    """
     user = input('Enter your name: ')
     today = datetime.today()
     form_date = today.strftime('%A, %d. %B %Y')
@@ -9,6 +13,10 @@ def greet_user():
 
  
 def choose_meal():
+    '''
+    Asks user to choose a meal from the given options.
+    Returns: Name of the chosen meal as a string.
+    '''
     meals = [
         'Chicken & Chips',
         'Chilli Con Carne',
@@ -19,8 +27,8 @@ def choose_meal():
         'Grilled Salmon'
     ]
 
-    print('What do you want to eat?')
-    print('Choose your desired lunch option and enter the number: ')
+    print('{user} are you hungry? What do you fancy as your mouth-watering meal? \nPlease note, that all recipes are for 4 people.')
+    print('Choose your desired meal option and enter the number: ')
     for i, meal in enumerate(meals, start=1):
         print(f'{i}. {meal}')
     try:
@@ -35,7 +43,12 @@ def choose_meal():
 
 
 def main():
-    #greet_user()  
+    '''
+    Main function to plan a meal by choosing a recipe as an interaction with the user.
+    Functions: greet_user, choose_meal and print_shopping_list.
+    Return: printing a shopping list with prices per item and the final sum for the chosen recipe.
+    '''
+    greet_user()  
     meal_choice = choose_meal()
     recipes = {
         'Chicken & Chips': chicken_chips,
@@ -102,6 +115,11 @@ ingredient_prices = {
 
 
 def print_shopping_list(recipe, meal_name):
+    '''
+    Prints the shopping list of needed ingredients for the chosen meal.
+    Args: recipe(dict): Dictionary containing ingredients and amounts.
+        meal_name(str): Name of the meal.
+    '''
     print(f'Shopping list for your {meal_name}: ')
     total_cost = 0
     for i in range(len(recipe['ingredients'])):
@@ -118,6 +136,13 @@ def print_shopping_list(recipe, meal_name):
     print(f'For your lunch * {meal_name} * you will spend {total_cost:.2f} Euro in your market.') 
 
 def create_recipe(ingredients, amounts):
+    '''
+    Function that combines ingredients and amounts to create a recipe.
+    * note: All recipes are taken from the official website of Jamie Oliver https://www.jamieoliver.com/
+    Returns: parameter ingredients and amounts, that are keys in dictionary
+        and are being used by the other function - print_shoping_list.
+        Price - extracted from the variable ingredient_prices original list.
+    '''
     return {
         'ingredients': ingredients,
         'amount' : amounts,
