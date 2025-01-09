@@ -19,7 +19,7 @@ def choose_meal():
         'Grilled Salmon'
     ]
 
-    print('What do you want to eat today?')
+    print('What do you want to eat?')
     print('Choose your desired lunch option and enter the number: ')
     for i, meal in enumerate(meals, start=1):
         print(f'{i}. {meal}')
@@ -40,29 +40,30 @@ def main():
     recipes = {
         'Chicken & Chips': chicken_chips,
         'Chilli Con Carne': chilli_con_carne,
-        'Broccoli Soup': brocolli_soup,
+        'Broccoli Soup': broccoli_soup,
         'Vegan Apple Crumble': vegan_apple_crumble,
         'Garlic Mushroom Pie': garlic_mushroom_pie,
-        'Spagetti Bolognese': spagetti_bolognese,
+        'Spaghetti Bolognese': spaghetti_bolognese,
         'Grilled Salmon': grilled_salmon
     }
     selected_recipe = recipes.get(meal_choice)
     if selected_recipe:
         print_shopping_list(selected_recipe, meal_choice)
-        #return menu == selected_recipe
     else:
         print('Recipe not found') 
 
 
 ingredient_prices = {
     'Broccoli': 0.5,
+    'Onions': 0.4,
+    'Lemons': 0.9,
     'Spring onions': 0.3,
     'Bread': 3,
     'Cheddar cheese': 3,
     'Veg stock cube': 0.5,
     'Parsley': 2.9,
     'Mix seeds': 3.5,
-    'Apples': 0.6,
+    'Apples': 0.2,
     'Sugar': 1.5,
     'Lemon': 0.7,
     'Vegan butter': 3.9,
@@ -77,20 +78,26 @@ ingredient_prices = {
     'Cornichons': 0.2,
     'Goat cheese': 4,
     'Salmon fillet': 8,
-    'Lemongrass': 2,
-    'Ginger': 1.3,
+    'Lemongrass': 0.5,
+    'Ginger': 0.8,
     'Soy sauce': 3,
     'Chilli': 0.4,
     'Lime': 0.6,
-    'Spagetti': 2,
+    'Spaghetti': 1.8,
     'Red onions': 0.5,
     'Carrots': 0.1,
     'Celery' : 1,
     'Rosemary': 0.2,
-    'Bacon': 3,
-    'Onions': 0.4,
-    'Oregano': 0.5,
-    'Chicken legs': 1.3
+    'Bacon': 2.9,
+    'Chicken legs': 1.8,
+    'Sweet potato': 3,
+    'Paprika': 2,
+    'Black beans': 1.8,
+    'Coriander': 2,
+    'Beef minced': 3.9,
+    'Cherry tomatoes': 0.3,
+    'Honey': 2.5,
+    'Oregano': 1.8
 }
 
 
@@ -103,7 +110,7 @@ def print_shopping_list(recipe, meal_name):
         price_per_unit = ingredient_prices.get(ingredient, 0)
         
         if price_per_unit == 0:
-            print('Warning: Price for {ingredient} not found. Using a default €0')
+            print('Warning: Price for {ingredient} not found.')
         cost = amount * price_per_unit
         total_cost += cost
         print(f'{ingredient}: {amount} piece(s) for €{price_per_unit} per piece.')
@@ -119,15 +126,15 @@ def create_recipe(ingredients, amounts):
 
   
 
-chicken_chips = {'ingredients' : ['Potatoes', 'Onions', 'Oregano:', 'Lemons', 'Chicken legs'],
-                        'amount' : [10, 2, 1, 2, 4]}
+chicken_chips = {'ingredients' : ['Potatoes', 'Onions', 'Oregano', 'Lemons', 'Chicken legs'],
+                        'amount' : [10, 3, 1, 3, 4]}
 
 
-chilli_con_carne = {'ingredients' : ['Sweet potato', 'Paprika', 'Black beans:', 'Chilli', 'Coriander', 'Beef minced','Lime','Cherry tomatoes'],
+chilli_con_carne = {'ingredients' : ['Sweet potato', 'Paprika', 'Black beans', 'Chilli', 'Coriander', 'Beef minced','Lime','Cherry tomatoes'],
                         'amount' : [1, 1, 1, 1, 1, 1, 0.5, 8]}
 
 
-brocolli_soup = {'ingredients' : ['Brocolli', 'Spring onions', 'Bread', 'Cheddar cheese', 'Veg stock cube', 'Parsley', 'Mix seeds'],
+broccoli_soup = {'ingredients' : ['Broccoli', 'Spring onions', 'Bread', 'Cheddar cheese', 'Veg stock cube', 'Parsley', 'Mix seeds'],
                         'amount' : [1, 4, 1, 1, 1, 1, 1]}
 
 
@@ -138,8 +145,8 @@ vegan_apple_crumble = {'ingredients' : ['Apples', 'Sugar', 'Lemon', 'Vegan butte
 garlic_mushroom_pie = {'ingredients' : ['Mushrooms', 'Baby spinach', 'Garlic', 'Potatoes', 'Eggs', 'Cornichons', 'Goat cheese'],
                         'amount' : [12, 1, 1, 10, 4, 8, 1 ]}
 
-spagetti_bolognese = {'ingredients' : ['Spagetti', 'Red onions', 'Garlic', 'Carrots', 'Celery', 'Rosemary', 'Bacon'],
-                        'amount' : [1, 3, 2, 3, 3, 2, 1 ]}
+spaghetti_bolognese = {'ingredients' : ['Spaghetti', 'Red onions', 'Garlic', 'Carrots', 'Celery', 'Rosemary', 'Bacon'],
+                        'amount' : [1, 3, 3, 3, 3, 2, 1 ]}
 
 grilled_salmon = {'ingredients' : ['Salmon fillet', 'Lemongrass', 'Ginger', 'Garlic', 'Soy sauce', 'Honey', 'Chilli', 'Spring onions', 'Lime'],
                         'amount' : [1, 1, 1, 1, 1, 1, 1, 2, 2]}
